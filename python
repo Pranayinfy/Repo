@@ -1,0 +1,16 @@
+import requests
+from requests.auth import HTTPBasicAuth
+
+# Jenkins credentials and job details
+jenkins_url = 'http://your-jenkins-url.com/job/your-job-name/build'  # Replace with your Jenkins URL
+username = 'your-username'  # Replace with your Jenkins username
+api_token = 'your-api-token'  # Replace with your Jenkins API token
+
+# Trigger the build job
+response = requests.post(jenkins_url, auth=HTTPBasicAuth(username, api_token))
+
+# Check the response from Jenkins
+if response.status_code == 201:
+    print("Build triggered successfully!")
+else:
+    print(f"Failed to trigger build. Status code: {response.status_code}")
